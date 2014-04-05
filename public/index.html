@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+    <title>Simple login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script type="javascript" src="/js/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="member-list">
+                    <thead>
+                        <tr>
+                            <th width="20%">Username</th>
+                            <th width="18%">Email</th>
+                            <th width="20%">Password</th>
+                            <th width="12%">Operation</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.name}}</td><td>{{user.email}}</td><td>{{user.pwd}}</td><td><span ng-click="deleteUser(user._id)" class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+                    <tfoot>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Operation</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Add user</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="inputEmail">Email address</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" ng-model="formCreateData.email">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputUsername">Username</label>
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" ng-model="formCreateData.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPwd">Password</label>
+                                <input type="password" class="form-control" id="inputPwd" placeholder="Enter password" ng-model="formCreateData.pwd">
+                            </div>
+                            <button type="submit" class="btn btn-default" ng-click="createUser()">add</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Login</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="sr-only" for="inputLoginName">Username</label>
+                                <input type="text" class="form-control" id="inputLoginName" placeholder="Enter username" ng-model="formLoginData.name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="inputLoginPwd">Password</label>
+                                <input type="password" class="form-control" id="inputLoginPwd" placeholder="Password" ng-model="formLoginData.pwd">
+                            </div>
+                                   
+                            <button type="submit" class="btn btn-default" ng-click="authUser()">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/angular.min.js"></script>
+    <script src="js/core.js"></script>
+  </body>
+</html>
