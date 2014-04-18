@@ -1,0 +1,7 @@
+.table-striped>tbody>tr:nth-child(odd).highlighted>td{
+	background-color: #8FE68F;
+}
+
+.table-striped>tbody>tr:nth-child(even).highlighted>td{
+	background-color: #8FE68F;
+}

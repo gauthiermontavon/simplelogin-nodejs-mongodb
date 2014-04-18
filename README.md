@@ -1,46 +1,25 @@
-##Troubleshootings
+#Simple login demo
+This is a quick'n'easy test project to try nodeJS server over a mongodb database.
+NodeJS modules used :
+- express
+- mongoose
 
-Check if some node instances are running :
-###Node server always running
-ps -aux
-then 
-killall -9 node 
-or
-kill $(ps ax | grep '[j]s' | awk '{ print $1 }'))
+The interactive part is implemented with AngularJS.
 
-####Routes
-app.get('*', function(req, res) {
-	res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-});
+##Persistence
+A free sandbox MongoDB database hosted on mongolab.com
 
-if we define a route with *, static content won't be available
-http://host/img/image.png => replace by /public/index.html
 
-then, use app.get('/'
+##Next step
+Authentification is not securised. Implementing a stronger authentification 
+(e.g using passport node's module) should be the next step 
 
-####POST Request parameters
-app.configure must be before app.post, otherwise it never be called
+##Screenshots
 
+![Screenshot](https://www.dropbox.com/s/6pt9rbw423zb9cu/nodelogin.png)
 
 ##Sources inspiration
 
 http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular
 http://danialk.github.io/blog/2013/02/20/simple-authentication-in-nodejs/
 
-Welcome to Cloud9 IDE!
-
-To get you started, we have created a demo chat application.
-
-1) Open the server.js file
-
-2) Click the 'Run' button at the top to start your server,
-
-3) Click the URL that is emitted to the Output tab of the console
-
-Happy coding!
-The Cloud9 IDE team
-
-## Support & Documentation
-
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide.

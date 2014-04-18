@@ -1,12 +1,8 @@
-
 function mainController($scope, $http) {
-	$scope.formData = {};
-
-	// when landing on the page, get all todos and show them
+	// landing on the page => get all users and display them
 
 	$http.get('/api/users').success(function(data) {
 		$scope.users = data;
-		console.log(data);
 		})
 		.error(function(data) {
 			console.log('Error: ' + data);
@@ -15,13 +11,14 @@ function mainController($scope, $http) {
     $scope.authUser = function(){
         $http.post('/api/user/auth', $scope.formLoginData)
             .success(function(data){
+                // clear the form after user is logged in
             	$scope.formLoginData = {}; 
-            	//TODO:highlight logged user
             	console.log('result user logged:'+data);
             	if(data.error){
             	    console.log('login error');
             	}else{
             	    console.log('user logged'+data._id);
+            	    $scope.idLoggedUser = data._id;
             	}
             	
             })
@@ -31,26 +28,24 @@ function mainController($scope, $http) {
             
     };	
 
-	// when submitting the add form, send the text to the node API
+	// when submitting the add form, send the data's form to the node API
 	$scope.createUser = function() {
 		$http.post('/api/users', $scope.formCreateData)
 			.success(function(data) {
-			// clear the form so our user is ready to enter another
+			    // clear the form so our user is ready to enter another one
 				$scope.formCreateData = {}; 
 				$scope.users = data;
-				console.log(data);
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);
 			});
 	};
 	
-	// delete a todo after checking it
+	// delete a user and refresh users' list in scope
 	$scope.deleteUser = function(id) {
 		$http.delete('/api/users/' + id)
 			.success(function(data) {
 				$scope.users = data;
-				console.log(data);
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);
