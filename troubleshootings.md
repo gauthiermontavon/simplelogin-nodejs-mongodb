@@ -1,7 +1,9 @@
 ##Troubleshootings
 
-Check if some node instances are running (cloud9 ide) :
+
 ###Node server always running
+Check if some node instances are running (cloud9 ide) :
+
 ps -aux
 then 
 killall -9 node 
@@ -14,7 +16,7 @@ app.get('*', function(req, res) {
 });
 
 if we define a route with *, static content won't be available
-http://host/img/image.png => replace by /public/index.html
+http://host/img/image.png => will be replaced by /public/index.html
 
 then, use app.get('/'
 
